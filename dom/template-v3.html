@@ -1,0 +1,27 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <p>{{ titulo }}</p>
+  <!-- O double moustache só retorna string na interpretação, numbers viram string também -->
+  <p>{{ saudacao() }}</p>
+  <!-- Essa forma não funciona, precisa de diretivas -->
+  <a href="{{ link }}">Google</a>
+  <!-- v-bind é uma diretiva que conecta um dado no vue -->
+  <a v-bind:href="link">google</a>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      titulo: 'Usando VueJS',
+      link: 'http://google.com'
+    },
+    methods: {
+      saudacao() {
+        console.log(this)
+        return this.titulo
+      }
+    }
+  })
+</script>

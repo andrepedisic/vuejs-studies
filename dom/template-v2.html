@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <p>{{ titulo }}</p>
+  <!-- O double moustache só retorna string na interpretação, numbers viram string também -->
+  <p>{{ saudacao() }}</p>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      titulo: 'Usando VueJS'
+    },
+    methods: {
+      saudacao() {
+        return 'Boa Semana!'
+      }
+    }
+  })
+</script>
