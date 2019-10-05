@@ -11,6 +11,9 @@
   </p>
   <!-- O prevent do evento click bloqueia o evento do botao click (que é um evento nativo do js) -->
   <a v-on:click.prevent="naoNavegar" href="http://www.google.com">Google</a>
+  <br />
+  <!-- Modificar o comportamento do keyup, só libera a funçao no enter + alt -->
+  <input type="text" v-on:keyup.enter.alt="exibirAlerta" />
 </div>
 
 <script>
@@ -37,6 +40,9 @@
         // Chama a função pra prevenir com um evento nativo do js
         console.log("Não navegar");
         // event.preventDefault();
+      },
+      exibirAlerta() {
+        alert("Alerta!");
       }
       // parar(event) {
       //   // evento nativo do JS
