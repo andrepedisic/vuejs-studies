@@ -1,0 +1,27 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <p>{{ titulo }}</p>
+  <!-- O vue fornece o conteudo para o HTML, nao o contrário -->
+  <input type="text" v-bind:value="titulo" />
+  <!-- Caso queira alterar em tempo real, use isso: -->
+  <input
+    type="text"
+    v-bind:value="titulo"
+    v-on:input="titulo = $event.target.value"
+  />
+  <!-- De uma forma mais simples: -->
+  <input type="text" v-model="titulo" />
+</div>
+
+<!-- V-bind : bind de uma direcao -> js para html -->
+<!-- v-model : duas direcoes -->
+<!-- v-on : evento que aconteceu no html e posso fazer uma acao pra atualizar dados no vue-->
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      titulo: "Usando VueJS"
+    }
+  });
+</script>
