@@ -1,0 +1,51 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <button v-on:click="aumentar">Aumentar</button>
+  <button v-on:click="contador2++">Aumentar 2</button>
+  <button v-on:click="diminuir">Diminuir</button>
+  <p>Contador: {{ contador }} | {{ contador2 }}</p>
+  <p>Resultado: {{ resultado }}</p>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      contador: 0,
+      contador2: 0
+    },
+    // Resulução do problema do computar 2 chamando o resultado tambem:
+    computed: {
+      resultado() {
+        // Sobre propriedades computadas e métodos:
+        console.log("Metodo computed resultado chamado...");
+        return this.contador >= 5 ? "Maior ou igual a 5" : "Menor que 5";
+      }
+    },
+    watch: {
+      // tem que coincidir com outra funcao/variavel externa. ele monitora a mesma e interage caso algo aconteca
+      contador(novo, antigo) {
+        setTimeout(() => {
+          // esse this não é lexico, ele pode mudar de acordo com a chamada
+          // portanto, nao funciona se chamar uma funcao tradicional aqui, tem que ser essa de ES6
+          this.contador = 0;
+        }, 2000);
+        console.log(novo, antigo);
+      }
+    },
+    methods: {
+      aumentar() {
+        this.contador++;
+      },
+      diminuir() {
+        this.contador--;
+      }
+      // resultado() {
+      //   // Sobre propriedades computadas e métodos:
+      //   console.log("Metodo resultado chamado...");
+      //   return this.contador >= 5 ? "Maior ou igual a 5" : "Menor que 5";
+      // }
+    }
+  });
+</script>
