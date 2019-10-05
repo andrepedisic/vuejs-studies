@@ -1,0 +1,33 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <!-- O v-once não permite a atualização do valor na diretiva -->
+  <p v-once>{{ titulo }}</p>
+  <!-- O double moustache só retorna string na interpretação, numbers viram string também -->
+  <p>{{ saudacao() }}</p>
+  <!-- Essa forma não funciona, precisa de diretivas -->
+  <a href="{{ link }}">Google</a>
+  <!-- v-bind é uma diretiva que conecta um dado no vue -->
+  <a v-bind:href="link">google</a>
+  <hr>
+  <!-- O v-html interpreta html no vue para virar html no html, por isso nao precisa de {{}} -->
+  <p v-html="linkHtml"></p>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      titulo: 'Usando VueJS',
+      link: 'http://google.com',
+      linkHtml: '<a href="http://google.com.br">Google</a>'
+    },
+    methods: {
+      saudacao() {
+        // Sempre ao houver mudança no valor da diretiva, é alterado no codigo todo
+        this.titulo = 'Bom dia!'
+        return this.titulo
+      }
+    }
+  })
+</script>
