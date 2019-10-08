@@ -23,29 +23,28 @@
 
 <div id="app">
   <div class="caixas">
-    <!-- No click, reverte o valor de aplicarC1 -->
-    <div class="demo" :class="estilo1" @click="aplicarC1 = !aplicarC1"></div>
-    <div class="demo"></div>
-    <!-- o bind na class nao interfere na class comum, e aqui ele conecta a classe com a string classeCSS`` -->
-    <div class="demo" :class="classeCSS"></div>
+    <div class="demo" :style="{'background-color': cor}"></div>
+    <div class="demo" :style="meuEstilo"></div>
+    <div class="demo" :style="[meuEstilo, {height: altura}]"></div>
   </div>
   <hr />
-  <!-- v-model irá alterar o texto do classCSS com o input -->
-  <input type="text" v-model="classeCSS" />
+  <input type="text" v-model="largura" />
+  <input type="text" v-model="cor" />
 </div>
 
 <script>
   new Vue({
     el: "#app",
     data: {
-      aplicarC1: false,
-      classeCSS: "c1"
+      cor: "red",
+      largura: 100,
+      altura: 20
     },
     computed: {
-      estilo1() {
+      meuEstilo() {
         return {
-          c1: this.aplicarC1,
-          c2: !this.aplicarC1
+          backgroundColor: this.cor,
+          width: this.largura + "px"
         };
       }
     }
